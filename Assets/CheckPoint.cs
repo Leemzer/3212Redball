@@ -1,0 +1,21 @@
+using UnityEngine;
+
+public class Checkpoint : MonoBehaviour
+{
+    public Respawn respawnObject;
+    
+    void Start()
+    {
+        respawnObject = GameObject.Find("Respawn").GetComponent<Respawn>(); // Find the Respawn object in the scene
+    }
+    void OnTriggerEnter(Collider touch)
+    {
+        if(touch.CompareTag("Player"))
+        {
+           respawnObject.transform.position = transform.position; // Set the respawn point to the checkpoint position
+            Destroy(gameObject); // Destroy the checkpoint after being activated
+        }
+    }
+
+}
+ 
