@@ -10,6 +10,10 @@ public class Movement : MonoBehaviour
     public float jumpForce = 5f;
     public bool isGrounded;
 
+    public KeyCode stopMovementKey;
+    public KeyCode turboMovementKey;
+    public KeyCode fallKey;
+
     public Vector2 moveInput;
     public LayerMask groundFilter;
 
@@ -43,17 +47,59 @@ public class Movement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
+ 
+
     void Update()
     {
         ReadInput_Update();
     }
     void FixedUpdate()
-    {   CheckGround_FixedUpdate();
+    {
+        CheckGround_FixedUpdate();
         Move_FixedUpdate();
+       // Stopmoving_FixedUpdate();
+    //    TurboMoving_FixedUpdate();
+
+
+
+    if(isGrounded==false){
+
+        if (Input.GetKey(fallKey))
+        {
+            Vector3 customGravity = new Vector3(0, -100f, 0);
+            rb.AddForce(customGravity, ForceMode.Acceleration);
+
+        }
+
     }
-}
- 
+
+
+    if (isGrounded){
+    if (Input.GetKey(stopMovementKey))
+    {
+        rb.angularDamping = 5;
+        rb.linearDamping = 5;
+        moveSpeed = 0f;
+        return; 
+    }}
+
+
+    if (Input.GetKey(turboMovementKey))
+    {
+        moveSpeed = 3f;
+        rb.angularDamping = 0f;
+        rb.linearDamping = 0f; 
+    }
+    else
+    {
+        moveSpeed = 0.4f;
+        rb.angularDamping = 0.5f;
+        rb.linearDamping = 0.5f;
+    }
+   
+
+    }
+}  

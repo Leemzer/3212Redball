@@ -25,6 +25,15 @@ public class Respawn : MonoBehaviour
     }
 
 
+
+    void Update()
+    {
+        if (playerObject.transform.position.y < -10)
+        {
+            RespawnPlayer();
+        }
+    }
+
     void Start()
     {
         RespawnPlayer();
