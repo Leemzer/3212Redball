@@ -89,9 +89,9 @@ public class Movement : MonoBehaviour
 
     if (Input.GetKey(turboMovementKey))
     {
-        moveSpeed = 3f;
+        moveSpeed = 2f;
         rb.angularDamping = 0f;
-        rb.linearDamping = 0f; 
+        rb.linearDamping = 0f;
     }
     else
     {
@@ -99,7 +99,6 @@ public class Movement : MonoBehaviour
         rb.angularDamping = 0.5f;
         rb.linearDamping = 0.5f;
     }
-   
 
     }
 }  
