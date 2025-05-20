@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     public KeyCode stopMovementKey;
     public KeyCode turboMovementKey;
     public KeyCode fallKey;
+    public KeyCode gravityChangrerKey;
 
     public Vector2 moveInput;
     public LayerMask groundFilter;
@@ -101,4 +102,4 @@ public class Movement : MonoBehaviour
     }
 
     }
-}  
+}  //прилипаня до стін зміна модельок двойний прижок магазин деш 
